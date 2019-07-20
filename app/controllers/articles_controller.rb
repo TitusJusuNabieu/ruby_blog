@@ -1,10 +1,10 @@
 class ArticlesController < ApplicationController
+    def index
+        @articles = Article.all
+    end
+    
     def new
 
-    end
-
-    def index
-        @article = Article.all
     end
 
     def show

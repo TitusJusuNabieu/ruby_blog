@@ -1,4 +1,22 @@
-<p><strong>Title: </strong>
-    <%= @article.title %></p><br><hr>
-    <p><strong>Content: </strong>
-        <%= @article.text %></p>
+<h1>List of Articles</h1><hr>
+
+<table>
+    <tr>
+        <th>Title</th>
+        <th>Content</th>
+    </tr>
+    <% @articles.each do |article| %>
+
+    <tr>
+        <td><%= article.title %></td>
+        <td>
+            <%= truncate(article.text, length:100)%>
+        </td>
+        <td><%= link_to  "Read More", article_path(article) %> </td>
+
+    </tr>
+    
+    <% end %>
+
+</table>
+<p><%= link_to "Home", root_path %></p>
