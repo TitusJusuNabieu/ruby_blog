@@ -17,6 +17,12 @@
     <strong>Comment</strong>
     <%= com.comment %>
 </p>
+<p>
+    <%= link_to "Delete Comment", [com.article, com],
+     method: :Delete, 
+    data: { confirm: "Are you Suer ???"} %>
+</p>
+
 <%end%>
 
 
