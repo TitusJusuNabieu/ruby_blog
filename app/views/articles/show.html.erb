@@ -1,5 +1,40 @@
 <p><strong>Title: </strong>
-<%= @article.title %></p><br><hr>
+<%= @article.title %>
+</p><br><hr>
 <p><strong>Content: </strong>
-    <%= @article.text %></p>
-    <p><%= link_to  "Home", root_path %> | <%= link_to  "Posts", articles_path %></p>
+    <%= @article.text %>
+</p>
+<hr>
+<h2>commments</h2>
+<% @article.comments.each do | com| %>
+<p><strong>
+    Commenter:
+</strong>
+    <%= com.commenter %>
+</p>
+
+<p>
+    <strong>Comment</strong>
+    <%= com.comment %>
+</p>
+<%end%>
+
+
+<h2> Add Comment</h2>
+
+<%=  form_for ([@article, @article.comments.build]) do |f| %>
+<p>
+    <%= f.label :commenter %><br>
+    <%= f.text_field :commenter %>
+</p>
+
+<p><%= f.label :comment %><br>
+<%= f.text_area :comment %></p>
+
+<p><%= f.submit %></p>
+<% end %>
+
+        <p>
+        <%= link_to  "Home", root_path %> |
+         <%= link_to  "Posts", articles_path %>
+        </p>
