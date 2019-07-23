@@ -4,6 +4,7 @@
 <p><strong>Content: </strong>
     <%= @article.text %>
 </p>
+<p> <%= @article.created_at %></p>
 <hr>
 <h2>commments</h2>
 <% @article.comments.each do | com| %>
@@ -18,6 +19,9 @@
     <%= com.comment %>
 </p>
 <p>
+    <%= com.created_at %>
+</p>
+<p>
     <%= link_to "Delete Comment", [com.article, com],
      method: :Delete, 
     data: { confirm: "Are you Suer ???"} %>
@@ -26,20 +30,7 @@
 <%end%>
 
 
-<h2> Add Comment</h2>
-
-<%=  form_for ([@article, @article.comments.build]) do |f| %>
-<p>
-    <%= f.label :commenter %><br>
-    <%= f.text_field :commenter %>
-</p>
-
-<p><%= f.label :comment %><br>
-<%= f.text_area :comment %></p>
-
-<p><%= f.submit %></p>
-<% end %>
-
+<%= render  "resource/comment" %>
         <p>
         <%= link_to  "Home", root_path %> |
          <%= link_to  "Posts", articles_path %>
