@@ -1,13 +1,18 @@
-<h2> Add Comment</h2>
+<div class="card" style="margin-top: 2vh; margin-bottom:2vh; padding:5vh">
 
-<%=  form_for ([@article, @article.comments.build]) do |f| %>
-<p>
-    <%= f.label :commenter %><br>
-    <%= f.text_field :commenter %>
-</p>
+        <h2> Add Comment</h2>
 
-<p><%= f.label :comment %><br>
-<%= f.text_area :comment %></p>
-
-<p><%= f.submit %></p>
-<% end %>
+        <%=  form_for ([@article, @article.comments.build]) do |f| %>
+        <div class="form-group">
+                <%= f.label :commenter %><br>
+                <%= f.text_field :commenter, class:"form-control" %>
+        </div>
+            <div class="form-group">
+                    <%= f.label :comment %><br>
+                    <%= f.text_area :comment, class:'form-control' %>
+            </div>
+        
+        <%= f.submit class:'btn btn-primary' %>
+        <% end %>
+        
+</div>

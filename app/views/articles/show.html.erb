@@ -1,37 +1,45 @@
-<p><strong>Title: </strong>
-<%= @article.title %>
-</p><br><hr>
-<p><strong>Content: </strong>
-    <%= @article.text %>
-</p>
-<p> <%= @article.created_at %></p>
-<hr>
-<h2>commments</h2>
-<% @article.comments.each do | com| %>
-<p><strong>
-    Commenter:
-</strong>
-    <%= com.commenter %>
-</p>
+<div class="row">
+    <div class="col-md-8 offset-md-2" >
 
-<p>
-    <strong>Comment</strong>
-    <%= com.comment %>
-</p>
-<p>
-    <%= com.created_at %>
-</p>
-<p>
-    <%= link_to "Delete Comment", [com.article, com],
-     method: :Delete, 
-    data: { confirm: "Are you Suer ???"} %>
-</p>
+            <div class="head" style="margin-top: 5vh; text-align:center;">
+                   
+                            <%= link_to  "Home", root_path, class:'btn btn-primary btn-lg' %> |
+                             <%= link_to  "Posts", articles_path, class:'btn btn-primary btn-lg' %>
+                            <hr>
+            </div>
 
-<%end%>
+            <div class="post">
+                    <h1><%= @article.title %></h1>
+                    <hr>
+                     <p>
+                         <%= @article.text %>
+                     </p>
+                     <p> <%= @article.created_at %></p>
+                     <hr>
+                     <h4>commments</h4>
+                     <% @article.comments.each do | com| %>
+                        <div class="jumbotron" style="padding: 1vh; margin:5vh;">
 
+                                <p>
+         
+                                        <%= com.comment %><br>
+                                        by: <%= com.commenter %><br>
+                                        <%= com.created_at %><br>
+                                        <%= link_to "Delete Comment", [com.article, com],
+                                         method: :Delete, 
+                                        data: { confirm: "Are you Suer ???"} %>
+                                    </p>
 
-<%= render  "resource/comment" %>
-        <p>
-        <%= link_to  "Home", root_path %> |
-         <%= link_to  "Posts", articles_path %>
-        </p>
+                        </div>
+                     <%end%>
+                     
+            </div>
+            
+            
+           <div style="margin-bottom: 10vh;">
+                <%= render  "resource/comment" %>
+           </div>
+                    
+
+    </div>
+</div>
